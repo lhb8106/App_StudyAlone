@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="50dp"
+        android:paddingTop="15dp">
+
+        <TextView
+            android:layout_width="3dp"
+            android:layout_height="80dp"
+            android:background="#6B6B6B">
+
+        </TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:gravity="center"
+            android:text="얼굴이 계속 햇빛을 향하도록 하라. 그러면 당신의 그림자를 볼 수 없다. -헬렌켈러-"
+            android:textStyle="bold">
+
+        </TextView>
+
+        <TextView
+            android:layout_width="3dp"
+            android:layout_height="80dp"
+            android:layout_alignParentRight="true"
+            android:background="#6B6B6B">
+
+        </TextView>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:padding="50dp"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center"
+            android:src="@drawable/main_icon" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:text="혼자 공부하는 어플"
+            android:textSize="25dp"
+            android:textColor="#6B6B6B"
+            android:textStyle="bold"></TextView>
+
+
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="30dp"
+        android:gravity="center">
+
+        <EditText
+            android:id="@+id/Id"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:textColor="#000000"
+            android:hint="아이디를 입력하세요"
+            android:textColorHint="#6B6B6B">
+
+        </EditText>
+
+        <EditText
+            android:id="@+id/Password"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="45dp"
+            android:textColor="#000000"
+            android:hint="비밀번호를 입력하세요"
+            android:textColorHint="#6B6B6B">
+
+        </EditText>
+
+        <Button
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginLeft="210dp"
+            android:text="확인">
+
+        </Button>
+
+
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+
+
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="회원가입"
+           android:background="#ffffff"></Button>
+
+    </LinearLayout>
+
+
+</LinearLayout>
