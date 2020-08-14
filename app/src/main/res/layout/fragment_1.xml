@@ -6,9 +6,37 @@
     tools:context=".Fragment1">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="todo" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:gravity="center">
+
+        <EditText
+            android:layout_width="342dp"
+            android:layout_height="wrap_content"
+            android:hint="할일을 입력하세요"
+            android:textColor="#000000"></EditText>
+
+        <Button
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="30dp"
+            android:background="@drawable/ic_baseline_add_circle_outline_24"
+            android:shadowColor="#000000">
+
+        </Button>
+
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="373dp"
+        android:layout_height="589dp"
+        android:layout_gravity="center"
+        android:padding="0dp"
+        tools:listitem="@layout/todo_item">
+
+    </androidx.recyclerview.widget.RecyclerView>
 
 </FrameLayout>

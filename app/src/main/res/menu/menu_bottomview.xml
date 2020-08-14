@@ -14,15 +14,15 @@
         android:title="Timer"/>
 
     <item
-        android:id="@+id/dday"
-        android:enabled="true"
-        android:icon="@drawable/dday"
-        android:title="D-day"/>
-
-    <item
         android:id="@+id/diary"
         android:enabled="true"
         android:icon="@drawable/diary"
+        android:title="D-day"/>
+
+    <item
+        android:id="@+id/dday"
+        android:enabled="true"
+        android:icon="@drawable/dday"
         android:title="Diary"/>
 
 </menu>

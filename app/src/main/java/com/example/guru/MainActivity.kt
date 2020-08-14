@@ -1,6 +1,8 @@
 package com.example.guru
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
@@ -8,6 +10,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
 class MainActivity : AppCompatActivity() {
+
     // FrameLayout에 각 메뉴의 Fragment를 바꿔 줌
     private val fragmentManager: FragmentManager = supportFragmentManager
 
@@ -38,17 +41,23 @@ class MainActivity : AppCompatActivity() {
                     transaction.replace(R.id.frame_layout, menu2Fragment)
                         .commitAllowingStateLoss()
                 }
-                R.id.dday -> {
+                R.id.diary -> {
                     transaction.replace(R.id.frame_layout, menu3Fragment)
                         .commitAllowingStateLoss()
                 }
-                R.id.diary -> {
+                R.id.dday -> {
                     transaction.replace(R.id.frame_layout, menu4Fragment)
                         .commitAllowingStateLoss()
                 }
             }
             true
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        val inflater: MenuInflater = menuInflater
+        inflater.inflate(R.menu.logout, menu)
+        return true
     }
 }
 
