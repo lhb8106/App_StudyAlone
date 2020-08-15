@@ -17,12 +17,12 @@
         android:id="@+id/diary"
         android:enabled="true"
         android:icon="@drawable/diary"
-        android:title="D-day"/>
+        android:title="Diary"/>
 
     <item
         android:id="@+id/dday"
         android:enabled="true"
         android:icon="@drawable/dday"
-        android:title="Diary"/>
+        android:title="D-day"/>
 
 </menu>

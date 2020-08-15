@@ -1,5 +1,6 @@
 package com.example.guru
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
@@ -22,7 +23,12 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_main) //setContentview 실행시 가장 먼저 나오는 화면
+
+//        //loadview
+//        val intent = Intent(this, Loadingview::class.java)
+//        startActivity(intent)
+
         val bottomNavigationView =
             findViewById<BottomNavigationView>(R.id.bottom_navi)
         // 첫 화면 지정
@@ -60,5 +66,7 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 }
+
+
 
 
