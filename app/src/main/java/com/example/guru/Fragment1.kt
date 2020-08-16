@@ -6,11 +6,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.guru.databinding.Fragment1Binding
 import com.example.guru.databinding.TodoItemBinding
+import kotlinx.android.synthetic.*
+import kotlinx.android.synthetic.main.fragment_1.*
+import kotlinx.android.synthetic.main.todo_item.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -36,8 +40,8 @@ class Fragment1 : Fragment() {
     // onDestroyView.
     private val binding get() = _binding!!
 
-
     private val data = arrayListOf<Todo>()
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -60,7 +64,7 @@ class Fragment1 : Fragment() {
 
         _binding = Fragment1Binding.inflate(inflater, container, false)
         val view = binding.root
-        return view
+
 
         data.add(Todo("work"))
         data.add(Todo("hey",true))
@@ -73,19 +77,22 @@ class Fragment1 : Fragment() {
                 onClickDeleteIcon = {
                     deleteTodo(it)
                 },
+                onClickEditIcon = {
+                    editTodo()
+                },
                 onClickItem = {
                     toggleTodo(it)
                 }
             )
         }
 
-        binding.addButton.setOnClickListener(View.OnClickListener(){
+        binding.addButton.setOnClickListener{
 
-            fun onClick(v: View?) {
-                // Your Code Lines....
-                addTodo()
-            }
-        })
+            addTodo()
+        }
+        
+
+        return view //last return
     }
 
 
@@ -103,6 +110,27 @@ class Fragment1 : Fragment() {
     private fun deleteTodo(todo: Todo) {
         data.remove(todo)
         binding.recyclerView.adapter?.notifyDataSetChanged()
+    }
+
+    private fun editTodo() {
+
+        if (edit.callOnClick()) {
+
+
+            Todo_list.setVisibility(View.INVISIBLE);
+            edit_text.setVisibility(View.VISIBLE);
+            edit_text.setText(binding.editText.text.toString());
+
+
+        } else {
+            edit_text.setVisibility(View.INVISIBLE);
+            Todo_list.setVisibility(View.VISIBLE);
+            Todo_list.setText(binding.editText.text.toString());
+
+
+
+        }
+
     }
 
 
@@ -143,6 +171,7 @@ data class Todo(
 class TodoAdapter(
     private val myDataset: List<Todo>,
     val onClickDeleteIcon: (todo: Todo) -> Unit,
+    val onClickEditIcon : (todo : Todo) -> Unit,
     val onClickItem: (todo: Todo) -> Unit
 ) :
     RecyclerView.Adapter<TodoAdapter.TodoViewHolder>() {
@@ -189,6 +218,12 @@ class TodoAdapter(
         holder.binding.delete.setOnClickListener {
             onClickDeleteIcon.invoke(todo)
         }
+
+        holder.binding.edit.setOnClickListener{
+            onClickEditIcon.invoke(todo)
+        }
+
+
 
         holder.binding.root.setOnClickListener{
             onClickItem.invoke(todo)
