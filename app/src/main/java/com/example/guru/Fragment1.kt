@@ -1,11 +1,13 @@
 package com.example.guru
 
+import android.app.AlertDialog
 import android.graphics.Paint
 import android.graphics.Typeface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.EditText
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -13,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.guru.databinding.Fragment1Binding
 import com.example.guru.databinding.TodoItemBinding
 import kotlinx.android.synthetic.*
+import kotlinx.android.synthetic.main.edit_box.*
 import kotlinx.android.synthetic.main.fragment_1.*
 import kotlinx.android.synthetic.main.todo_item.*
 
@@ -78,7 +81,7 @@ class Fragment1 : Fragment() {
                     deleteTodo(it)
                 },
                 onClickEditIcon = {
-                    editTodo()
+                    editTodo(it)
                 },
                 onClickItem = {
                     toggleTodo(it)
@@ -90,7 +93,8 @@ class Fragment1 : Fragment() {
 
             addTodo()
         }
-        
+
+
 
         return view //last return
     }
@@ -112,24 +116,30 @@ class Fragment1 : Fragment() {
         binding.recyclerView.adapter?.notifyDataSetChanged()
     }
 
-    private fun editTodo() {
+    private fun editTodo(todo : Todo) {
 
         if (edit.callOnClick()) {
 
 
-            Todo_list.setVisibility(View.INVISIBLE);
-            edit_text.setVisibility(View.VISIBLE);
-            edit_text.setText(binding.editText.text.toString());
+            Todo_list.setVisibility(View.INVISIBLE)
+            edit_text.setVisibility(View.VISIBLE)
+            val temp1: String = todo.toString()
+            edit_text.setText(temp1)
+            edit_text.setText(binding.editText.text.toString())
 
 
         } else {
-            edit_text.setVisibility(View.INVISIBLE);
-            Todo_list.setVisibility(View.VISIBLE);
-            Todo_list.setText(binding.editText.text.toString());
-
+            edit_text.setVisibility(View.INVISIBLE)
+            Todo_list.setVisibility(View.VISIBLE)
+            Todo_list.setText(binding.editText.text.toString())
 
 
         }
+
+
+
+
+
 
     }
 
@@ -222,8 +232,6 @@ class TodoAdapter(
         holder.binding.edit.setOnClickListener{
             onClickEditIcon.invoke(todo)
         }
-
-
 
         holder.binding.root.setOnClickListener{
             onClickItem.invoke(todo)
