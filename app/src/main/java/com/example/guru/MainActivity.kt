@@ -4,10 +4,14 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
+import com.firebase.ui.auth.AuthUI
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.auth.FirebaseAuth
+
 
 
 class MainActivity : AppCompatActivity() {
@@ -60,11 +64,48 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+
+
+
+    //로그아웃
+
+
+    fun logout() {
+        AuthUI.getInstance().signOut(this).addOnCompleteListener {
+            FirebaseAuth.getInstance().signOut()
+            startSignUpActivity()
+        }
+
+
+    }
+
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         val inflater: MenuInflater = menuInflater
         inflater.inflate(R.menu.logout, menu)
         return true
     }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // Handle item selection
+        return when (item.itemId) {
+            R.id.logout -> {
+                logout()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+
+        }
+
+    }
+
+    private fun startSignUpActivity() {
+        val intent = Intent(this, Login_start_view::class.java)
+        startActivity(intent)
+    }
+
+
+
 }
 
 
